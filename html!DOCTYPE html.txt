@@ -1,0 +1,333 @@
+html<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Vecchia Signora - Pizzería & Rotisería</title>
+    <!-- Google Fonts para tipografía moderna -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #d94e14; /* Color fuego de tu logo */
+            --primary-dark: #b83a07;
+            --dark-bg: #121212; /* Fondo elegante oscuro como el logo */
+            --card-bg: #1e1e1e;
+            --text-light: #f8f9fa;
+            --text-muted: #aaaaaa;
+            --accent: #22c55e; /* Verde WhatsApp */
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+        }
+
+        /* Encabezado / Navbar */
+        header {
+            background-color: #1a1a1a;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        /* Sección Principal (Hero) */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('https://unsplash.com') no-repeat center center/cover;
+            height: 55vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            font-weight: 300;
+            color: #dddddd;
+        }
+
+        .btn-order {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(217, 78, 20, 0.4);
+        }
+
+        .btn-order:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Contenedor General */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            position: relative;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Seccion Promos Especiales */
+        .promos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .promo-card {
+            background: linear-gradient(135deg, #2c1a12, #1e1e1e);
+            border: 2px solid var(--primary);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-card h3 {
+            color: var(--primary);
+            font-size: 22px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .promo-card p {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .promo-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            background-color: var(--primary);
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 20px;
+        }
+
+        /* Grilla del Menú Tradicional */
+        .menu-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .menu-sections { grid-template-columns: 1fr; }
+        }
+
+        .menu-block {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .menu-block h2 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .menu-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            font-size: 16px;
+        }
+
+        .menu-list-item .item-name {
+            font-weight: 400;
+        }
+
+        .menu-list-item .item-price {
+            font-weight: 700;
+            color: var(--text-light);
+            white-space: nowrap;
+        }
+
+        /* Botón de WhatsApp Flotante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            z-index: 100;
+            text-decoration: none;
+            font-size: 30px;
+            transition: 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Info de Contacto / Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: var(--text-light);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 3px solid var(--primary);
+        }
+
+        footer p {
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        footer p strong {
+            color: var(--primary);
+        }
+
+        /* Responsivo Celulares */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <div class="logo">La Vecchia <span>Signora</span></div>
+        <a href="https://wa.me" class="btn-order" target="_blank">Pedir Ahora</a>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="hero">
+        <h1>LA VECCHIA SIGNORA</h1>
+        <p>Pizzería • Envíos y Para Retirar</p>
+        <a href="#menu" class="btn-order">Ver Promos y Menú</a>
+    </section>
+
+    <div class="container" id="menu">
+        
+        <!-- SECCIÓN PROMOS -->
+        <h2 class="section-title">Promos Imperdibles</h2>
+        <div class="promos-grid">
+            <div class="promo-card">
+                <h3>Promo 1</h3>
+                <p>2 Pizzas Muzzas</p>
+                <div class="promo-price">$19.000</div>
+            </div>
+            <div class="promo-card">
+                <h3>Promo 2</h3>
+                <p>Muzza + Napolitana</p>
+                <div class="promo-price">$22.000</div>
+            </div>
+            <div class="promo-card">
+                <h3>Promo 3</h3>
+                <p>Muzza + 6 Empanadas JyQ</p>
+                <div class="promo-price">$23.000</div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN MENÚ GENERAL -->
+        <div class="menu-sections">
+            
+            <!-- Bloque Pizzas -->
+            <div class="menu-block">
+                <h2>Pizzas (x8 porciones)</h2>
+                <div class="menu-list-item">
+                    <span class="item-name">Muzarella</span>
+                    <span class="item-price">$11.000</span>
+                </div>
+                <div class="menu-list-item">
+                    <span class="item-name">Napolitana</span>
+                    <span class="item-price">$12.800</span>
+                </div>
+                <div class="menu-list-item">
+                    <span class="item-name">Fugazzeta</span>
+                    <span class="item-price">$13.000</span>
+                </div>
+                <div class="menu-list-item">
+                    <span class="item-name">Roquefort</span>
+                    <span class="item-price">$14.000</span>
+                </div>
+                <div class="menu-list-item">
+                    <span class="item-name">Pepperoni</span>
+                    <span class="item-price">$16.000</span>
+                </div>
+                <div class="menu-list-item">
+                    <span class="item-name">Jamón y Morrón</span>
+                    <span class="item-price">$17.500</span>
+                </div>
+                <div class="menu-list-item">
